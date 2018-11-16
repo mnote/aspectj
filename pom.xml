@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.mnote</groupId>
+    <artifactId>aspectj</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+
+        <java.source.version>1.8</java.source.version>
+        <java.target.version>1.8</java.target.version>
+        <maven.test.failure.ignore>true</maven.test.failure.ignore>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+        <org.projectlombok.version>1.18.4</org.projectlombok.version>
+
+        <aspectj.version>1.9.2</aspectj.version>
+
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+
+        <!-- aspectj the classes and aspects along with aspectjrt -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <!-- introduce advice to Java class at load time -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <!-- ajc -->
+        <!--
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        -->
+
+        <!-- jcabi -->
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aspects</artifactId>
+            <version>0.22.6</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>aspectjrt</artifactId>
+                    <groupId>org.aspectj</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.13.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>6.0.13.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.6</version>
+        </dependency>
+
+        <!-- lombok -->
+        <!--<dependency>-->
+            <!--<groupId>org.projectlombok</groupId>-->
+            <!--<artifactId>lombok</artifactId>-->
+            <!--<version>${org.projectlombok.version}</version>-->
+        <!--</dependency>-->
+
+        <!-- mapstruct -->
+        <!--
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+        -->
+        <!-- fix old idea bug IDEA-150621 -->
+        <!--
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.2</version>
+                <configuration>
+                    <source>${java.source.version}</source>
+                    <target>${java.target.version}</target>
+                    <!--
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    -->
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.11</version>
+                <dependencies>
+                    <!-- the aspectj compiler -->
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <verbose>true</verbose>
+
+                    <!-- Post-compile weaving (also sometimes called binary weaving)  -->
+                    <!-- empty sources andforceAjcCompile to enable post-compile weaving -->
+                    <sources/>
+                    <forceAjcCompile>true</forceAjcCompile>
+
+                    <complianceLevel>${java.target.version}</complianceLevel>
+                    <source>${java.source.version}</source>
+                    <target>${java.target.version}</target>
+
+                    <!-- List of of directories with .class files to weave (into target directory) -->
+                    <!-- Corresponds to ajc -inpath option. -->
+                    <weaveDirectories>
+                        <weaveDirectory>${project.build.directory}/classes</weaveDirectory>
+                        <weaveDirectory>${project.build.directory}/test-classes</weaveDirectory>
+                    </weaveDirectories>
+
+                    <!-- Weave third party dependency -->
+                    <!-- List of of modules to weave (into target directory) -->
+                    <!-- Corresponds to ajc -inpath option. -->
+                    <!-- Error: Duplicate field name ajc$ if add goal test-compile -->
+                    <!---->
+                    <weaveDependencies>
+                        <weaveDependency>
+                            <groupId>com.jcabi</groupId>
+                            <artifactId>jcabi-aspects</artifactId>
+                        </weaveDependency>
+                    </weaveDependencies>
+
+
+                    <!-- Weave binary aspects from the jars -->
+                    <!-- Corresponds to ajc -aspectpath option -->
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>com.jcabi</groupId>
+                            <artifactId>jcabi-aspects</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- Compile and weave aspects after all classes compiled by javac -->
+                        <phase>process-classes</phase>
+                        <goals>
+                            <!-- compile-time weaving -->
+                            <!-- When we have both the source code of the aspect and the code that we are using aspects in, the AspectJ compiler will compile from source and produce a woven class files as output. -->
+                            <!-- use this goal to weave all your main classes -->
+                            <goal>compile</goal>
+                            <!-- use this goal to weave all your test classes -->
+                            <!--<goal>test-compile</goal>-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
+                <configuration>
+                    <!-- Load-time weaving is simply binary weaving deferred until the point that a class loader loads a class file and defines the class to the JVM. -->
+                    <!-- Enabling Load-Time Weaving using AspectJ agent and aspectjweaver -->
+                    <!-- AspectJ’s load-time weaving agent is configured by the use of aop.xml files. It looks for one or more aop.xml files on the classpath in the META-INF directory and aggregates the contents to determine the weaver configuration. -->
+                    <argLine>-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar</argLine>
+                    <useSystemClassLoader>true</useSystemClassLoader>
+                    <forkCount>1</forkCount>
+                    <useFile>false</useFile>
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+</project>

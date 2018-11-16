@@ -1,0 +1,22 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+
+    <!-- -verbose -debug -Xset:weaveJavaxPackages=true -->
+    <weaver options="-showWeaveInfo -verbose">
+
+        <!-- only weave classes in application-specific packages -->
+        <include within="io.github.mnote.aspectj.*"/>
+        <include within="io.github.mnote.annotation.*"/>
+
+        <!-- the weaving need to be enabled also for aspect classes -->
+
+    </weaver>
+
+    <aspects>
+
+        <aspect name="io.github.mnote.aspectj.AccountAspect"/>
+        <aspect name="io.github.mnote.annotation.SecuredMethodAspect"/>
+
+    </aspects>
+
+</aspectj>
