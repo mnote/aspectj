@@ -1,7 +1,7 @@
 title: "aspectj"
 description: ""
 
-url: "https://mnote.github.io/aspectj"
+url: "https://mnote.github.io/aspectj/"
 #url: "http://localhost:4000"
 
 paginate: 10
@@ -9,8 +9,8 @@ paginate: 10
 #paginate_path: ":num"
 #baseurl: ""
 
-permalink: none
-#permalink: /:year-:month-:day-:title
+#permalink: none
+permalink: :year-:month-:day-:title
 
 
 highlighter: rouge
