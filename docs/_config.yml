@@ -9,6 +9,9 @@ paginate: 10
 paginate_path: ":num"
 #baseurl: ""
 
+permalink: /:year-:month-:day-:title
+
+
 highlighter: rouge
 markdown: kramdown
 kramdown:
