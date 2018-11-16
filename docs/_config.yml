@@ -4,5 +4,17 @@ description: ""
 url: "https://mnote.github.io/aspectj"
 #url: "http://localhost:4000"
 
+paginate: 10
+#paginate_path: "/page/:num/"
+paginate_path: ":num"
+#baseurl: ""
+
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input:  GFM
+  syntax_highlighter: rouge
+
+gems: [jekyll-paginate]
 
 theme: jekyll-theme-cayman
