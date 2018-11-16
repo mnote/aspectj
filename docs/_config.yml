@@ -6,10 +6,11 @@ url: "https://mnote.github.io/aspectj"
 
 paginate: 10
 #paginate_path: "/page/:num/"
-paginate_path: ":num"
+#paginate_path: ":num"
 #baseurl: ""
 
-permalink: /:year-:month-:day-:title
+permalink: none
+#permalink: /:year-:month-:day-:title
 
 
 highlighter: rouge
