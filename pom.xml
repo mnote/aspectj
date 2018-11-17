@@ -221,7 +221,7 @@
                 <executions>
                     <execution>
                         <!-- Compile and weave aspects after all classes compiled by javac -->
-                        <phase>process-classes</phase>
+                        <!--<phase>process-classes</phase>-->
                         <goals>
                             <!-- compile-time weaving -->
                             <!-- When we have both the source code of the aspect and the code that we are using aspects in, the AspectJ compiler will compile from source and produce a woven class files as output. -->
