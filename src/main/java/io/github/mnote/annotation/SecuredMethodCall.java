@@ -4,6 +4,8 @@ import com.jcabi.aspects.Loggable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
+
 public class SecuredMethodCall {
 
     //init logging for @Loggable
@@ -19,5 +21,6 @@ public class SecuredMethodCall {
         SecuredMethod service = new SecuredMethod();
         service.lockedMethod();
         service.unlockedMethod();
+        service.paramMethod(BigDecimal.valueOf(-12.222));
     }
 }
