@@ -14,8 +14,8 @@
 
     <aspects>
 
-        <aspect name="io.github.mnote.aspectj.AccountAspect"/>
-        <aspect name="io.github.mnote.annotation.SecuredMethodAspect"/>
+        <!--<aspect name="io.github.mnote.aspectj.AccountAspect"/>-->
+        <!--<aspect name="io.github.mnote.annotation.SecuredMethodAspect"/>-->
 
     </aspects>
 

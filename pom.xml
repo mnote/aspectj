@@ -190,23 +190,22 @@
 
                     <!-- List of of directories with .class files to weave (into target directory) -->
                     <!-- Corresponds to ajc -inpath option. -->
-                    <weaveDirectories>
-                        <weaveDirectory>${project.build.directory}/classes</weaveDirectory>
-                        <weaveDirectory>${project.build.directory}/test-classes</weaveDirectory>
-                    </weaveDirectories>
+                    <!--<weaveDirectories>-->
+                        <!--<weaveDirectory>${project.build.directory}/classes</weaveDirectory>-->
+                        <!--<weaveDirectory>${project.build.directory}/test-classes</weaveDirectory>-->
+                    <!--</weaveDirectories>-->
 
                     <!-- Weave third party dependency -->
                     <!-- List of of modules to weave (into target directory) -->
                     <!-- Corresponds to ajc -inpath option. -->
-                    <!-- Error: Duplicate field name ajc$ if add goal test-compile -->
-                    <!---->
+                    <!--
                     <weaveDependencies>
                         <weaveDependency>
                             <groupId>com.jcabi</groupId>
                             <artifactId>jcabi-aspects</artifactId>
                         </weaveDependency>
                     </weaveDependencies>
-
+                    -->
 
                     <!-- Weave binary aspects from the jars -->
                     <!-- Corresponds to ajc -aspectpath option -->
@@ -217,9 +216,11 @@
                         </aspectLibrary>
                     </aspectLibraries>
 
+
                 </configuration>
                 <executions>
                     <execution>
+                        <id>weaving-classes</id>
                         <!-- Compile and weave aspects after all classes compiled by javac -->
                         <!--<phase>process-classes</phase>-->
                         <goals>
@@ -227,9 +228,50 @@
                             <!-- When we have both the source code of the aspect and the code that we are using aspects in, the AspectJ compiler will compile from source and produce a woven class files as output. -->
                             <!-- use this goal to weave all your main classes -->
                             <goal>compile</goal>
-                            <!-- use this goal to weave all your test classes -->
-                            <!--<goal>test-compile</goal>-->
                         </goals>
+                        <configuration>
+                            <weaveDirectories>
+                                <weaveDirectory>${project.build.directory}/classes</weaveDirectory>
+                            </weaveDirectories>
+                            <!--
+                            <weaveDependencies>
+                                <weaveDependency>
+                                    <groupId>com.jcabi</groupId>
+                                    <artifactId>jcabi-aspects</artifactId>
+                                </weaveDependency>
+                            </weaveDependencies>
+                            -->
+                            <!-- aspectLibraries NOT HERE! -->
+                            <!--
+                            <aspectLibraries>
+                                <aspectLibrary>
+                                    <groupId>com.jcabi</groupId>
+                                    <artifactId>jcabi-aspects</artifactId>
+                                </aspectLibrary>
+                            </aspectLibraries>
+                            -->
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>weaving-test-classes</id>
+                        <!--<phase>process-test-classes</phase>-->
+                        <goals>
+                            <!-- use this goal to weave all your test classes -->
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <weaveDirectories>
+                                <weaveDirectory>${project.build.directory}/test-classes</weaveDirectory>
+                            </weaveDirectories>
+                            <!--
+                            <weaveDependencies>
+                                <weaveDependency>
+                                    <groupId>com.jcabi</groupId>
+                                    <artifactId>jcabi-aspects</artifactId>
+                                </weaveDependency>
+                            </weaveDependencies>
+                            -->
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
