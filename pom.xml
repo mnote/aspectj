@@ -178,7 +178,7 @@
                 <configuration>
                     <showWeaveInfo>true</showWeaveInfo>
                     <verbose>true</verbose>
-
+                    <outxml>true</outxml>
                     <!-- Post-compile weaving (also sometimes called binary weaving)  -->
                     <!-- empty sources andforceAjcCompile to enable post-compile weaving -->
                     <sources/>
@@ -195,14 +195,13 @@
                         <!--<weaveDirectory>${project.build.directory}/test-classes</weaveDirectory>-->
                     <!--</weaveDirectories>-->
 
-                    <!-- Weave third party dependency -->
-                    <!-- List of of modules to weave (into target directory) -->
+                    <!-- Weave third party dependency to weave (into target directory) -->
                     <!-- Corresponds to ajc -inpath option. -->
                     <!--
                     <weaveDependencies>
                         <weaveDependency>
-                            <groupId>com.jcabi</groupId>
-                            <artifactId>jcabi-aspects</artifactId>
+                            <groupId>xx</groupId>
+                            <artifactId>xx</artifactId>
                         </weaveDependency>
                     </weaveDependencies>
                     -->
@@ -222,11 +221,8 @@
                     <execution>
                         <id>weaving-classes</id>
                         <!-- Compile and weave aspects after all classes compiled by javac -->
-                        <!--<phase>process-classes</phase>-->
                         <goals>
-                            <!-- compile-time weaving -->
-                            <!-- When we have both the source code of the aspect and the code that we are using aspects in, the AspectJ compiler will compile from source and produce a woven class files as output. -->
-                            <!-- use this goal to weave all your main classes -->
+                            <!-- use this goal to weave all your classes -->
                             <goal>compile</goal>
                         </goals>
                         <configuration>
@@ -236,19 +232,10 @@
                             <!--
                             <weaveDependencies>
                                 <weaveDependency>
-                                    <groupId>com.jcabi</groupId>
-                                    <artifactId>jcabi-aspects</artifactId>
+                                    <groupId>xx</groupId>
+                                    <artifactId>xx</artifactId>
                                 </weaveDependency>
                             </weaveDependencies>
-                            -->
-                            <!-- aspectLibraries NOT HERE! -->
-                            <!--
-                            <aspectLibraries>
-                                <aspectLibrary>
-                                    <groupId>com.jcabi</groupId>
-                                    <artifactId>jcabi-aspects</artifactId>
-                                </aspectLibrary>
-                            </aspectLibraries>
                             -->
                         </configuration>
                     </execution>
@@ -266,8 +253,8 @@
                             <!--
                             <weaveDependencies>
                                 <weaveDependency>
-                                    <groupId>com.jcabi</groupId>
-                                    <artifactId>jcabi-aspects</artifactId>
+                                    <groupId>xx</groupId>
+                                    <artifactId>xx</artifactId>
                                 </weaveDependency>
                             </weaveDependencies>
                             -->
