@@ -1,0 +1,4 @@
+Premain-Class: io.github.mnote.agent.ClassDumperAgent
+Agent-Class: io.github.mnote.agent.ClassDumperAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true

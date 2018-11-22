@@ -5,7 +5,6 @@ import org.junit.Test;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validation;
-import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
@@ -56,7 +55,7 @@ public class UserTest {
     }
 
 
-    @Test(expected = ValidationException.class)
+    @Test
     public void validateOfCodeCall(){
 
         User user = new User();
@@ -69,7 +68,6 @@ public class UserTest {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
 
-        //javax.validation.ValidationException: HV000090: Unable to access getName
         Set<ConstraintViolation<User>> violations = validator.validate(user);
 
         for (ConstraintViolation<User> violation : violations) {
