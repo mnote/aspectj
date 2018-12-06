@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-@ContextConfiguration(locations = "classpath:applicationConext.xml")
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AsyncAnnotationTest {
 
